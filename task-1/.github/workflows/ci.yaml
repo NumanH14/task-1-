@@ -1,0 +1,34 @@
+name: CI/CD python count app 
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-test-push:
+    name: Build, Test and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout source code
+      - name: Checkout source code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Fetches full history for better caching/context
+
+      # Login to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Build and push prod image
+      - name: build docker image
+      - run: docker build -t numanh14/ci-cd-task-1
+      
+
+        

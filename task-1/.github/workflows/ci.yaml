@@ -26,9 +26,11 @@ jobs:
 
       # Build and push prod image
       - name: build docker image
-        run: |
-          docker build -t numanh14/cicd-task-1:latest .
-          docker push numanh14/cicd-task-1:latest 
+        run: docker build -t numanh14/cicd-task-1:latest .
+
+      - name: push docker image
+        run: docker push numanh14/cicd-task-1:latest
+
 
       
 

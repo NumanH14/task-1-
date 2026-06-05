@@ -15,20 +15,21 @@ jobs:
     steps:
       # Checkout source code
       - name: Checkout source code
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0 # Fetches full history for better caching/context
+        uses: actions/checkout@v2
 
       # Login to Docker Hub
       - name: Log in to Docker Hub
-        uses: docker/login-action@v4
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Build and push prod image
       - name: build docker image
-      - run: docker build -t numanh14/ci-cd-task-1
+        run: |
+          docker build -t numanh14/ci-cd-task-1:latest .
+          docker push numanh14/ci-cd-task-1:latest 
+
       
 
         

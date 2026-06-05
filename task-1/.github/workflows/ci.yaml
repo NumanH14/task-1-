@@ -31,7 +31,6 @@ jobs:
       - name: push docker image
         run: docker push numanh14/cicd-task-1:latest
 
-
       
 
         

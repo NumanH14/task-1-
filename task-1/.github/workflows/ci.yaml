@@ -29,7 +29,7 @@ jobs:
         run: docker build -t numanh14/cicd-task-1:latest -f task-1/Dockerfile .
 
       - name: push docker image
-        run: docker push numanh14/cicd-task-1:latest
+        run: docker push numanh14/cicd-task-1:latest 
 
       
 

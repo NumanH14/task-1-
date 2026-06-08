@@ -29,5 +29,5 @@ jobs:
       # Build and push prod image
       - name: build docker image
         run: |
-          docker build -t numanh14/ci-cd-task-1 .
+          docker build -t numanh14/ci-cd-task-1 -f task-1/Dockerfile .
           docker push numanh14/ci-cd-task-1

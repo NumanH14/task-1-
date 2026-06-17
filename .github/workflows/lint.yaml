@@ -1,0 +1,38 @@
+name: Terraform lint pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  terraform-lint:
+    name: Terraform lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task-1/task02
+
+    steps:
+      - name: Checkout terraform code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialise terraform providers
+        run: |
+         terraform init
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+      - name: Init TFLint
+        run: |
+         tflint --init
+
+      - name: Run TFLint
+        run: |
+         tflint -f compact
+         
